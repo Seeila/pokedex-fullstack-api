@@ -7,5 +7,6 @@ builder.Services.InitializeServices();
 
 var app = builder.Build();
 
+app.InitializeApplication();
 
 app.Run();
