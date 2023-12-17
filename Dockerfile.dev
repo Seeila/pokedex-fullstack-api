@@ -1,0 +1,16 @@
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /app
+COPY pokedexApi/pokedexApi.csproj ./pokedexApi/
+COPY pokedexBusiness/pokedexBusiness.csproj ./pokedexBusiness/
+COPY pokedexData/pokedexData.csproj ./pokedexData/
+
+WORKDIR /app/pokedexApi
+RUN dotnet restore
+
+WORKDIR /app
+COPY pokedexApi/. ./pokedexApi/
+COPY pokedexBusiness/. ./pokedexBusiness/
+COPY pokedexData/. ./pokedexData/
+
+WORKDIR /app/pokedexApi
+ENTRYPOINT dotnet watch run
