@@ -35,6 +35,8 @@ namespace pokedexApi.Initializers
                     mongoDbConfiguration.DatabaseName
                 );
             });
+
+            services.AddCors();
         }
     }
 }
